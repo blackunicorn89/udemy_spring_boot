@@ -1,12 +1,12 @@
 package com.spring.core;
 
 public class Traveler {
-    Car car = null;
+   Bike bike;
     public Traveler() {
-        this.car = new Car();
+        this.bike = new Bike();
     }
 
     public void startJourney() {
-        this.car.move();
+        this.bike.move();
     }
 }
