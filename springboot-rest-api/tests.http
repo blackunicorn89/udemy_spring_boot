@@ -1,0 +1,28 @@
+DELETE http://localhost:8080/students/delete/8
+###
+PUT http://localhost:8080/students/update/6
+Content-Type: application/json
+
+{ "firstname": "Yaruno", "lastname": "Strangerman"}
+
+
+###
+POST http://localhost:8080/students/create
+Content-Type: application/json
+
+{ "id": 10, "firstname": "John", "lastname": "Hawk"}
+
+###
+GET http://localhost:8080/students
+Accept: application/json
+
+###
+GET http://localhost:8080/students/student
+Accept: application/json
+
+###
+GET http://localhost:8080/hi
+Accept: application/json
+
+###
+
