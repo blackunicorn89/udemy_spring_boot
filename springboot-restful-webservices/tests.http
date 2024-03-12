@@ -10,9 +10,9 @@ POST http://localhost:8080/api/users/add
 Content-Type: application/json
 
 {
-  "firstName": "Tikrus",
-  "lastName": "Tiikeri",
-  "email": "tikrus@tiikeri.com"
+  "firstName": "Nasu",
+  "lastName": "Kenguru",
+  "email": "nasu@kenguru.com"
 }
 ###
 PUT http://localhost:8080/api/users/update/2

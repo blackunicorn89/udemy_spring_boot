@@ -1,7 +1,9 @@
 package net.javaguides.springboot.service.impl;
 
 import lombok.AllArgsConstructor;
+import net.javaguides.springboot.dto.UserDto;
 import net.javaguides.springboot.entity.User;
+import net.javaguides.springboot.mapper.UserMapper;
 import net.javaguides.springboot.repository.UserRepository;
 import net.javaguides.springboot.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -16,29 +18,41 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserDto createUser(UserDto userDto) {
+//        Convert UserDto into User JPA entity
+        User user = UserMapper.mapToUser(userDto);
+
+        User savedUser = userRepository.save(user);
+
+        //        Convert saved User Jpa entity into UserDto
+        UserDto savedUserDt0 = UserMapper.mapToUserDto(savedUser);
+
+        return savedUserDt0;
+
+
     }
 
     @Override
-    public User getUserById(Long userId) {
-       Optional<User> user =  userRepository.findById(userId);
-       return user.get();
+    public UserDto getUserById(Long userId) {
+//       Optional<UserDto> user =  userRepository.findById(userId);
+//       return user.get();
+        return null;
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDto> getAllUsers() {
+//        return userRepository.findAll();
+        return null;
     }
 
     @Override
-    public User updateUser(User user) {
-        User existingUser = userRepository.findById(user.getId()).get();
-        existingUser.setFirstName(user.getFirstName());
-        existingUser.setLastName(user.getLastName());
-        existingUser.setEmail(user.getEmail());
-        User updatedUser = userRepository.save(existingUser);
-        return updatedUser;
+    public UserDto updateUser(UserDto user) {
+//        UserDto existingUser = userRepository.findById(user.getId()).get();
+//        existingUser.setFirstName(user.getFirstName());
+//        existingUser.setLastName(user.getLastName());
+//        existingUser.setEmail(user.getEmail());
+//        UserDto updatedUser = userRepository.save(existingUser);
+        return null;
     }
 
     @Override
