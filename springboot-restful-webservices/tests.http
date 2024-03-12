@@ -1,0 +1,29 @@
+GET http://localhost:8080/api/users
+Accept: application/json
+
+###
+GET http://localhost:8080/api/users/2
+accept: application/json
+
+###
+POST http://localhost:8080/api/users/add
+Content-Type: application/json
+
+{
+  "firstName": "Tikrus",
+  "lastName": "Tiikeri",
+  "email": "tikrus@tiikeri.com"
+}
+###
+PUT http://localhost:8080/api/users/update/2
+Content-Type: application/json
+
+{
+  "firstName": "Maija",
+  "lastName": "Mehiläinen",
+  "email": "maija@mehilainen.com"
+}
+
+###
+DELETE http://localhost:8080/api/users/delete/2
+
