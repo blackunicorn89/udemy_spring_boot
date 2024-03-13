@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -29,30 +30,29 @@ public class UserServiceImpl implements UserService {
 
         return savedUserDt0;
 
-
     }
 
     @Override
     public UserDto getUserById(Long userId) {
-//       Optional<UserDto> user =  userRepository.findById(userId);
-//       return user.get();
-        return null;
+       Optional<User> optionalUser =  userRepository.findById(userId);
+       User user = optionalUser.get();
+       return UserMapper.mapToUserDto(user);
     }
 
     @Override
     public List<UserDto> getAllUsers() {
-//        return userRepository.findAll();
-        return null;
+        List<User> users = userRepository.findAll();
+        return users.stream().map(UserMapper::mapToUserDto).collect(Collectors.toList());
     }
 
     @Override
     public UserDto updateUser(UserDto user) {
-//        UserDto existingUser = userRepository.findById(user.getId()).get();
-//        existingUser.setFirstName(user.getFirstName());
-//        existingUser.setLastName(user.getLastName());
-//        existingUser.setEmail(user.getEmail());
-//        UserDto updatedUser = userRepository.save(existingUser);
-        return null;
+        User existingUser = userRepository.findById(user.getId()).get();
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setEmail(user.getEmail());
+        User updatedUser = userRepository.save(existingUser);
+        return UserMapper.mapToUserDto(updatedUser);
     }
 
     @Override

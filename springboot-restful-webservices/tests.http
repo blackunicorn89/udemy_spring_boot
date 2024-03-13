@@ -2,7 +2,7 @@ GET http://localhost:8080/api/users
 Accept: application/json
 
 ###
-GET http://localhost:8080/api/users/2
+GET http://localhost:8080/api/users/4
 accept: application/json
 
 ###
@@ -15,13 +15,13 @@ Content-Type: application/json
   "email": "nasu@kenguru.com"
 }
 ###
-PUT http://localhost:8080/api/users/update/2
+PUT http://localhost:8080/api/users/update/5
 Content-Type: application/json
 
 {
-  "firstName": "Maija",
-  "lastName": "Mehiläinen",
-  "email": "maija@mehilainen.com"
+  "firstName": "Nasu",
+  "lastName": "Kenguru",
+  "email": "nasu@kangaroo.com"
 }
 
 ###
