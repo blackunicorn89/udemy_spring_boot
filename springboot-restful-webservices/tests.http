@@ -11,8 +11,8 @@ Content-Type: application/json
 
 {
   "firstName": "Risto",
-  "lastName": "Salskea",
-  "email": "risto@salskea.com"
+  "lastName": "Sakea",
+  "email": "risto@sakea.com"
 }
 ###
 PUT http://localhost:8080/api/users/update/5
