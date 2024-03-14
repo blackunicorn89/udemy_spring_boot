@@ -10,7 +10,7 @@ POST http://localhost:8080/api/users/add
 Content-Type: application/json
 
 {
-  "firstName": "Risto",
+  "firstName": "Jonttu",
   "lastName": "Sakea",
   "email": "risto@sakea.com"
 }
@@ -19,8 +19,8 @@ PUT http://localhost:8080/api/users/update/5
 Content-Type: application/json
 
 {
-  "firstName": "Ihaa",
-  "lastName": "Thedonkey",
+  "firstName": "Jihaa",
+  "lastName": "TheMonke",
   "email": "ihaa@donkey.com"
 }
 
