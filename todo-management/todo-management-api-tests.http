@@ -1,0 +1,11 @@
+POST http://localhost:8080/api/todos/add
+Content-Type: application/json
+
+{
+  "title": "Stop working",
+  "description": "Stop working and go to spend weekend",
+  "completed": true
+}
+
+
+###
