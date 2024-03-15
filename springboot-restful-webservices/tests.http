@@ -27,3 +27,13 @@ Content-Type: application/json
 ###
 DELETE http://localhost:8080/api/users/delete/6
 
+###
+#Changes thes logging level of net.javaguides. Didn't work
+POST http://localhost:8080/actuator/loggers/net.javaguides
+Content-Type: application/json
+
+{ "effectiveLevel":"3" }
+
+###
+POST http://localhost:8080/actuator/shutdown
+
