@@ -77,4 +77,13 @@ public class TodoServiceImpl implements TodoService {
         Todo updatedTodo = todoRepository.save(todo);
         return modelMapper.map(updatedTodo, TodoDto.class);
     }
+
+    @Override
+    public TodoDto incompleteTodoDto(Long id) {
+        Todo todo = todoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Todo not found with the id: " + id));
+        todo.setCompleted(Boolean.FALSE);
+
+        Todo updatedTodo = todoRepository.save(todo);
+        return modelMapper.map(updatedTodo, TodoDto.class);
+    }
 }

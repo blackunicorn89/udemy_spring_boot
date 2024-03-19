@@ -17,8 +17,7 @@ public class TodoController {
     private TodoService todoService;
 
     //Add todo REST API
-    @PostMapping
-    @RequestMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<TodoDto> addTodo(@RequestBody TodoDto todoDto) {
         TodoDto savedTodoDto = todoService.addTodo(todoDto);
         return new ResponseEntity<>(savedTodoDto, HttpStatus.CREATED);
@@ -41,7 +40,7 @@ public class TodoController {
     }
 
     //Edit todo REST API
-    @RequestMapping
+
     @PutMapping("/edit/{id}")
     public ResponseEntity<TodoDto>editTodo(@RequestBody TodoDto todoDto, @PathVariable("id") Long todoId) {
         TodoDto updatedTodoDto = todoService.UpdateTodo(todoDto, todoId);
@@ -49,10 +48,17 @@ public class TodoController {
     }
 
     //Set todo to completed REST API
-    @PatchMapping("/setCompleted/{id}")
+    @PatchMapping("/setcompleted/{id}")
     public ResponseEntity<TodoDto>setTodoToCompleted(@PathVariable("id") Long todoId) {
         TodoDto completedToDo = todoService.comppleteTodoDto(todoId);
         return ResponseEntity.ok(completedToDo);
+    }
+
+    //Set todo to incompleted REST API
+    @PatchMapping("/setincompleted/{id}")
+    public ResponseEntity<TodoDto>setTodoToIncompleted(@PathVariable("id") Long todoId) {
+        TodoDto incompletedToDo = todoService.incompleteTodoDto(todoId);
+        return ResponseEntity.ok(incompletedToDo);
     }
 
     //Delete todo REST Api

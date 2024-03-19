@@ -10,8 +10,8 @@ POST http://localhost:8080/api/todos/add
 Content-Type: application/json
 
 {
-  "title": "Hang in there",
-  "description": "The workday is almost over",
+  "title": "Relax",
+  "description": "Relax after work day",
   "completed": false
 }
 ###
@@ -26,7 +26,9 @@ Content-Type: application/json
 }
 
 ###
-PATCH localhost:8080/api/todos/setCompleted/6
+PATCH localhost:8080/api/todos/setcompleted/6
+###
+PATCH localhost:8080/api/todos/setincompleted/1
 
 ###
 DELETE http://localhost:8080/api/todos/delete/2
