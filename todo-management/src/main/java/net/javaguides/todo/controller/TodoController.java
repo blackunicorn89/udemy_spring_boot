@@ -6,6 +6,7 @@ import net.javaguides.todo.service.TodoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class TodoController {
     private TodoService todoService;
 
     //Add todo REST API
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<TodoDto> addTodo(@RequestBody TodoDto todoDto) {
         TodoDto savedTodoDto = todoService.addTodo(todoDto);
@@ -24,6 +26,7 @@ public class TodoController {
     }
 
     //Get Single todo REST API
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("{id}")
     public ResponseEntity<TodoDto> getSingleTodo(@PathVariable("id") Long todoId) {
         TodoDto singleToDo = todoService.getTodo(todoId);
@@ -33,6 +36,7 @@ public class TodoController {
 
     //Get all todos REST API
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<List<TodoDto>> getAllTodos() {
         List<TodoDto>allTodos = todoService.getAllTodos();
         return new ResponseEntity<>(allTodos, HttpStatus.OK);
@@ -40,7 +44,7 @@ public class TodoController {
     }
 
     //Edit todo REST API
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public ResponseEntity<TodoDto>editTodo(@RequestBody TodoDto todoDto, @PathVariable("id") Long todoId) {
         TodoDto updatedTodoDto = todoService.UpdateTodo(todoDto, todoId);
@@ -48,6 +52,7 @@ public class TodoController {
     }
 
     //Set todo to completed REST API
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PatchMapping("/setcompleted/{id}")
     public ResponseEntity<TodoDto>setTodoToCompleted(@PathVariable("id") Long todoId) {
         TodoDto completedToDo = todoService.comppleteTodoDto(todoId);
@@ -55,6 +60,7 @@ public class TodoController {
     }
 
     //Set todo to incompleted REST API
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PatchMapping("/setincompleted/{id}")
     public ResponseEntity<TodoDto>setTodoToIncompleted(@PathVariable("id") Long todoId) {
         TodoDto incompletedToDo = todoService.incompleteTodoDto(todoId);
@@ -62,6 +68,7 @@ public class TodoController {
     }
 
     //Delete todo REST Api
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String>deleteToDo(@PathVariable("id") Long id) {
         todoService.DeleteToDo(id);
