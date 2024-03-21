@@ -4,7 +4,6 @@ public class User {
     private String name;
     private String email;
     private String role;
-    private String gender;
 
     public String getName() {
         return name;
@@ -30,19 +29,11 @@ public class User {
         this.role = role;
     }
 
-    public String getGender() {
-        return gender;
-    }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public User(String name, String email, String role, String gender) {
+    public User(String name, String email, String role) {
         this.name = name;
         this.email = email;
         this.role = role;
-        this.gender = gender;
     }
 
 
