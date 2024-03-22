@@ -7,7 +7,6 @@ public class UserForm {
     private String email;
     private String password;
     private String gender;
-    private boolean married;
     private String address;
     private String profession;
 
@@ -41,14 +40,6 @@ public class UserForm {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public boolean isMarried() {
-        return married;
-    }
-
-    public void setMarried(boolean married) {
-        this.married = married;
     }
 
     public String getAddress() {

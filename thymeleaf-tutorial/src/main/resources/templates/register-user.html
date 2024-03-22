@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>User Registration Form</title>
+    <link th:href="@{/css/userRegisterForm.css}" rel="stylesheet"/>
 </head>
 <body>
 <div style="align-self: center">
-    <div style="border-style:solid; width:500px">
+    <div>
         <h1>User Registration Form</h1>
         <form
             role="form"
@@ -15,28 +16,36 @@
             th:action="@{/register/save}"
             th:object="${userForm}"
         >
-            <label>Full name:</label>
-            <input type="text" th:field="*{name}"/>
+            <label for="name">Full name:</label>
+            <input id="name" type="text" th:field="*{name}"/>
             <br />
-            <label>E-mail:</label>
-            <input type="email" th:field="*{email}"/>
+            <label for="email">E-mail:</label>
+            <input id="email" type="email" th:field="*{email}"/>
             <br />
-            <label>Password:</label>
-            <input type="password" th:field="*{password}"/>
+            <label for="password">Password:</label>
+            <input id="password" type="password" th:field="*{password}"/>
             <br />
             <label>Gender:</label>
+            <label class="genderRadiobuttonLabel">
             <input type="radio" th:field="*{gender}" value="Male" />Male
+            </label>
+            <label class="genderRadiobuttonLabel">
             <input type="radio" th:field="*{gender}" value="Female" />Female
+            </label>
+            <label class="genderRadiobuttonLabel">
             <input type="radio" th:field="*{gender}" value="Other" />Other
+            </label>
+            <label class="genderRadiobuttonLabel">
             <input type="radio" th:field="*{gender}" value="N/a" />I don't want to tell
+            </label>
             <br />
-            <label>Profession:</label>
-            <select th:field="*{profession}">
+            <label for="profession">Profession:</label>
+            <select id="profession" th:field="*{profession}">
                 <option th:each="profession : ${listProfession}" th:value="${profession}" th:text="${profession}"></option>
             </select>
             <br />
-            <label>Address:</label>
-            <textarea rows="5" cols="25" th:field="*{address}"></textarea>
+            <label for="address">Address:</label>
+            <textarea id="address" rows="5" cols="25" th:field="*{address}"></textarea>
             <br />
             <button type="submit">Register</button>
         </form>
