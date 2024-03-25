@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://thymeleaf.org"
->
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>User Registration Form</title>
@@ -31,18 +30,26 @@
     <div class="card-header">
       <h1 class="text-center">Registration Form</h1>
     </div>
-
+  <div th:if="${param.success}">
+    <div class="alert alert-info">
+      You have successfully registered to our application
+    </div>
+  </div>
   <div class="card-body">
     <form method="post" role="form" th:action="@{/register/save}" th:object="${user}">
       <div class="form-group mb-3">
         <label class="form-label" for="firstname">Firstname:</label>
         <input class="form-control" type="text" id="firstname" placeholder="Enter your firstname" th:field="*{firstname}"/>
+        <p th:errors="*{firstname}" class="text-danger" th:if="${#fields.hasErrors('firstname')}"></p>
         <label class="form-label" for="lastname">Lastname:</label>
         <input class="form-control" type="text" id="lastname" placeholder="Enter your lastname" th:field="*{lastname}"/>
+        <p th:errors="*{lastname}" class="text-danger" th:if="${#fields.hasErrors('lastname')}"></p>
         <label class="form-label" for="email">Email:</label>
         <input class="form-control" type="email" id="email" placeholder="Enter your email address:" th:field="*{email}"/>
+        <p th:errors="*{email}" class="text-danger" th:if="${#fields.hasErrors('email')}"></p>
         <label class="form-label" for="password">Password:</label>
         <input class="form-control" type="password" id="password" placeholder="Enter a password" th:field="*{password}"/>
+        <p th:errors="*{password}" class="text-danger" th:if="${#fields.hasErrors('password')}"></p>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Register</button>
