@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-   //If you want to use native SQL syntax make sure the table name is correct, you don't use alias names and you add "nativeQuery = true" at the end of @Query entity
+   //If you want to use native SQL syntax make sure the table name is correct, you don't use alias names, and you add "nativeQuery = true" at the end of @Query entity
     @Query("Select p From Product p where " +
-    "p.name LIKE CONCAT('%', :query, '%')" +
-    "p.description LIKE CONCAT('%', :query, '%')")
+    "p.name LIKE CONCAT('%',:query, '%')" +
+    "Or p.description LIKE CONCAT('%', :query, '%')")
     List<Product>searchProducts(String query);
 }

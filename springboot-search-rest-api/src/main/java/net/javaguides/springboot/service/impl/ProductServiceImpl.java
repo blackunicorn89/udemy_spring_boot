@@ -4,6 +4,7 @@ import net.javaguides.springboot.entity.Product;
 import net.javaguides.springboot.repository.ProductRepository;
 import net.javaguides.springboot.service.ProductService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -22,5 +23,10 @@ public class ProductServiceImpl implements ProductService {
         List<Product>products = productRepository.searchProducts(query);
 
         return products;
+    }
+
+    @Override
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
     }
 }
