@@ -26,4 +26,13 @@ public class StudentController {
         model.addAttribute("students", students);
         return "students";
     }
+
+//    Method to hande new student request
+    @GetMapping("students/new_student")
+    public String newStudent(Model model) {
+        //Student model object to store student form data
+        StudentDto studentDto = new StudentDto();
+        model.addAttribute("student", studentDto);
+        return "new_student";
+    }
 }
