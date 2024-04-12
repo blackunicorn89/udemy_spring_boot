@@ -1,2 +1,3 @@
 */*.gitignore
 .idea
+sql_scripts.sql

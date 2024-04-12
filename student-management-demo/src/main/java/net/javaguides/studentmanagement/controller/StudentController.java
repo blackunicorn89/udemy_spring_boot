@@ -1,11 +1,13 @@
 package net.javaguides.studentmanagement.controller;
 
+import jakarta.validation.Valid;
 import net.javaguides.studentmanagement.dto.StudentDto;
+import net.javaguides.studentmanagement.entity.Student;
 import net.javaguides.studentmanagement.servie.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +36,24 @@ public class StudentController {
         StudentDto studentDto = new StudentDto();
         model.addAttribute("student", studentDto);
         return "new_student";
+    }
+
+//    Method to handle add student form request
+
+    @PostMapping("students/add")
+    public String addNewStudent(@Valid @ModelAttribute("studentDto") StudentDto studentDto, BindingResult result, Model model) {
+        if(result.hasErrors()) {
+            model.addAttribute("studentDto", studentDto);
+            return "new_student";
+        }
+        studentService.addNewStudent(studentDto);
+        return "redirect:/students";
+    }
+//    Method to handle edit student form request
+    @GetMapping("students/edit/{id}")
+    public String editStudent(@PathVariable("id") Long id, Model model) {
+        StudentDto studentDto = studentService.getStudentById(id);
+        model.addAttribute("studentDto", studentDto);
+        return "edit_student";
     }
 }
