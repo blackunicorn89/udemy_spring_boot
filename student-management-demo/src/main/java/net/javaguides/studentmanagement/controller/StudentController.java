@@ -29,6 +29,15 @@ public class StudentController {
         return "students";
     }
 
+//    Method to handdle student details request
+    @GetMapping("/students/details/{id}")
+    public String showStudentDetails(@PathVariable("id") Long id, Model model) {
+        StudentDto studentDto;
+        studentDto = studentService.getStudentById(id);
+        model.addAttribute("studentDto", studentDto);
+        return "student_details";
+    }
+
 //    Method to hande new student request
     @GetMapping("students/new_student")
     public String newStudent(Model model) {
@@ -56,4 +65,25 @@ public class StudentController {
         model.addAttribute("studentDto", studentDto);
         return "edit_student";
     }
+
+//    Method to handle edit student form submit request
+    @PostMapping("/students/edit/{id}")
+    public String updateStudent(@PathVariable("id") Long id, @Valid @ModelAttribute("studentDto") StudentDto studentDto,
+                                BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("studentDto", studentDto);
+            return "edit_student";
+        }
+        studentDto.setId(id);
+        studentService.updateStudent(studentDto);
+        return "redirect:/students";
+    }
+
+//    Method to handel delete request
+    @GetMapping("/students/delete/{id}")
+    public String deleteStudent(@PathVariable("id") Long id) {
+        studentService.deleteStudent(id);
+        return "redirect:/students";
+    }
+
 }

@@ -28,7 +28,7 @@
             <h2 class="text-center">Edit student</h2>
         </div>
         <div class="card-body">
-            <form role="form" method="post" th:object="${studentDto}" th:action="@{/students/{id}(id=${studentDto.id})}" >
+            <form role="form" method="post" th:object="${studentDto}" th:action="@{/students/edit/{id}(id=${studentDto.id})}" >
                 <div class="form-body">
                     <div class="form-group mb-3">
                         <label for="firstName">First name</label>
@@ -46,7 +46,7 @@
                         <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Add new student</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </form>
         </div>
     </div>
