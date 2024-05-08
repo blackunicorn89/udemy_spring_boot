@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component("Pizza")
 public class PizzaController {
 
     private Pizza pizza;
@@ -28,5 +27,13 @@ public class PizzaController {
 
     public String GetPizza() {
         return pizza.getPizza();
+    }
+
+    public void init() {
+        System.out.println("(initialization logic) Making pizza");
+    }
+
+    public void destroy() {
+        System.out.println("(Destroy logic) Eating pizza");
     }
 }
